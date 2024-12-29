@@ -747,7 +747,7 @@
           <li class="nav-item">
             <a href="AdminLTE/#" class="nav-link">
               <i class="fas fa-circle nav-icon"></i>
-              <p>Level 1</p>
+              <p>Level 5</p>
             </a>
           </li>
           <li class="nav-item">
