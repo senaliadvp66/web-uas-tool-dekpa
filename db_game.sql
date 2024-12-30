@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2024 at 06:14 AM
+-- Generation Time: Dec 30, 2024 at 05:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,6 +36,14 @@ CREATE TABLE `game` (
   `gambar` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `game`
+--
+
+INSERT INTO `game` (`id_game`, `judul`, `id_kategori`, `deskripsi`, `spesifikasi`, `gambar`) VALUES
+(1, 'God of War : Ragnarok', 1, 'Game Keren', 'Minimum:\n\nMinimum:\r\n• Requires a 64-bit processor and operating system\r\n• OS: Windows 11\r\n• Processor: Intel Core 11\r\n• Memory: 16gb DDR6\r\n• Graphics: RTX 7000\r\n• DirectX:DirectX 11\r\n• Storage: 1tb\r\n\r\nRecommended:\r\n• Requires a 64-bit processor and operating system\r\n• OS: \r\n• Processor: \r\n• Memory: \r\n• Graphics: \r\n• DirectX: \r\n• Storage: \r\nAdditional Notes: \n\nRecommended:\n\n', 'gow.jpg'),
+(2, 'Assassins Creed : Mirage', 1, 'Petualangan Assassins yang penuh misteri', 'Minimum:\r\n• Requires a 64-bit processor and operating system\r\n• OS: Core i9\r\n• Processor:\r\n• Memory: \r\n• Graphics:\r\n• DirectX: \r\n• Storage: \r\n\r\nRecommended:\r\n• Requires a 64-bit processor and operating system\r\n• OS: \r\n• Processor: \r\n• Memory: \r\n• Graphics: \r\n• DirectX: \r\n• Storage: \r\nAdditional Notes: ', 'ass.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +54,19 @@ CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
+(1, 'Action'),
+(2, 'Adventure'),
+(3, 'Fighting'),
+(4, 'RPG'),
+(5, 'Strategy'),
+(6, 'Racing'),
+(7, 'Anime');
 
 -- --------------------------------------------------------
 
@@ -66,7 +87,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `nama`, `password`, `role`) VALUES
-(1, 'ayam', 'Ayam Muhammad', '$2y$10$8u/wlHGEchwKjKHEb4mrcuLjtIFYCXDqKAIWBAsxM2rekWfxO3Tj2', 'admin');
+(1, 'ayam', 'Ayam Muhammad Zaifudin', '$2y$10$8u/wlHGEchwKjKHEb4mrcuLjtIFYCXDqKAIWBAsxM2rekWfxO3Tj2', 'admin'),
+(2, 'Lia', 'Lia Empank', '$2y$10$teduu3dJusyuip5A5rBo3.0VG6tFrk89li5EnQ4TI2t92ewi6eEJO', 'user');
 
 --
 -- Indexes for dumped tables
@@ -99,19 +121,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

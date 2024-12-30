@@ -3,6 +3,12 @@
 session_start();
 include('config.php'); // Database connection file
 
+// Redirect to index if the user is already logged in
+if (isset($_SESSION['id_user'])) {
+    header('Location: index.php');
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];

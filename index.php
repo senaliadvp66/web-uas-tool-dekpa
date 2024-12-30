@@ -1,5 +1,36 @@
+<?php
+// Start the session
+session_start();
+include('config.php'); // Database connection file
 
+// Check if the user is logged in, if not redirect to login page
+if (!isset($_SESSION['id_user'])) {
+    header("location: login.php");
+    exit;
+}
 
+// Logout functionality
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("location: login.php");
+    exit;
+}
+
+// Fetch games from database
+$query = "SELECT * FROM game";
+$result = $conn->query($query);
+$games = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $games[] = [
+            'id_game' => $row['id_game'],
+            'judul' => $row['judul'],
+            'deskripsi' => $row['deskripsi'],
+            'gambar' => $row['gambar']
+        ];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +38,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DGame - Home</title>
     <link rel="stylesheet" href="style/style.css">
+    <script>
+        const games = <?= json_encode($games); ?>;
+    </script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -16,7 +50,7 @@
             <a href="index.php">Home</a>
             <a href="#games">Games</a>
             <a href="about.php">About</a>
-            <a href="#contact">Contact</a>
+            <a href="?logout=true" style="color: #e50914; font-weight: bold;">Logout</a>
         </nav>
     </header>
 
@@ -26,7 +60,7 @@
     </section>
 
     <section class="game-section" id="games">
-        <!-- Games will be dynamically loaded here -->
+        <!-- Games will be dynamically loaded here by script.js -->
     </section>
 
     <div id="pagination" style="text-align: center; margin: 20px 0;"></div>

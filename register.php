@@ -1,6 +1,12 @@
 <?php
-
+session_start();
 include "config.php";
+
+if (isset($_SESSION['id_user'])) {
+    header('Location: index.php');
+    exit;
+}
+
 // register.php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
